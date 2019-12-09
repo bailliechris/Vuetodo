@@ -26,20 +26,19 @@ export default {
   },//End data
   methods: {
     deleteTodo(id) {
-      axios.delete("https://jsonplaceholder.typicode.com/todos/${" + id +"}")
-      .then(this.todos = this.todos.filter(todo => todo.id !== id))
-        
+      this.todos = this.todos.filter(todo => todo.id !== id)
+      axios.put("https://api.myjson.com/bins/fijd4", JSON.stringify(this.todos))
     },
 
     addTodo(newTodo){
       const { title, completed } = newTodo;
 
-      axios.post("https://jsonplaceholder.typicode.com/todos", { title, completed })
+      axios.post("https://api.myjson.com/bins/fijd4", JSON.stringify({ title, completed }))
       .then(res => this.todos = [...this.todos, res.data]);
     }
   },
   created() {
-    axios.get("https://jsonplaceholder.typicode.com/todos?_limit=5")
+    axios.get("https://api.myjson.com/bins/fijd4")
     .then(res => this.todos = res.data);
   }
 }
