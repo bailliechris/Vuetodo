@@ -21,24 +21,28 @@ export default {
   },
   data() {
     return {
-      todos: []//End todos array
+      todos: [
+ 
+ 
+      ]//End todos array
     }//End return
   },//End data
   methods: {
     deleteTodo(id) {
-      this.todos = this.todos.filter(todo => todo.id !== id)
-      axios.put("https://api.myjson.com/bins/fijd4", JSON.stringify(this.todos))
+      this.todos = this.todos.filter(element => element.id !== id)
+      axios.put("https://api.myjson.com/bins/ev42s", this.todos)
     },
 
     addTodo(newTodo){
-      const { title, completed } = newTodo;
+      this.todos.push(newTodo);
 
-      axios.post("https://api.myjson.com/bins/fijd4", JSON.stringify({ title, completed }))
-      .then(res => this.todos = [...this.todos, res.data]);
+      axios.put("https://api.myjson.com/bins/ev42s", this.todos);
+    //  .then(res => this.todos = [...this.todos, res.data]);
     }
   },
   created() {
-    axios.get("https://api.myjson.com/bins/fijd4")
+    axios.get("https://api.myjson.com/bins/ev42s")
+    //axios.get("https://api.myjson.com/bins/dyuvq")
     .then(res => this.todos = res.data);
   }
 }
